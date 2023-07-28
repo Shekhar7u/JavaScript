@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scroll Progress Bar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 2000px;
+            /* Adjust the height based on the content of your page */
+        }
+
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #e32f2f;
+        }
+
+        #progressFill {
+            height: 100%;
+            background-color: #09ee0d;
+            width: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progressBar">
+        <div id="progressFill"></div>
+    </div>
+    <script>
+        window.addEventListener('scroll', updateProgressBar);
+
+        function updateProgressBar() {
+            // Get the scroll position and the total scrollable height of the page
+            const scrollTop = window.scrollY;
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+            // Calculate the percentage scrolled
+            const scrollPercentage = (scrollTop / totalHeight) * 100;
+
+            // Update the width of the progress fill element to show the progress
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = scrollPercentage + '%';
+        }
+    </script>
+
+</body>
+
+</html>

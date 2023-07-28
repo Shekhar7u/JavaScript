@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic List Items</title>
+</head>
+<body>
+  <h2>What you'll learn</h2>
+  <ol id="learnList">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ol>
+  <button id="addButton">Add Item</button>
+
+  <script>
+    // Pre-existing array of list items
+    const listItems = ["React", "Node.js", "MongoDB", "Express.js", "REST API"];
+
+    document.getElementById('addButton').addEventListener('click', function() {
+      const learnList = document.getElementById('learnList');
+
+      // Check if there are remaining items in the listItems array
+      if (listItems.length > 0) {
+        // Get the next item from the listItems array
+        const nextItem = listItems.shift();
+
+        // Create a new list item element and add it to the ordered list
+        const listItemElement = document.createElement('li');
+        listItemElement.textContent = nextItem;
+        learnList.appendChild(listItemElement);
+      } else {
+        // All items have been added
+        const messageElement = document.createElement('p');
+        messageElement.textContent = "All items have been added!";
+        learnList.appendChild(messageElement);
+      }
+    });
+  </script>
+</body>
+</html>
