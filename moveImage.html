@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Move Image with Arrow Keys</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="./waving-hand.png" alt="Moving Image" width="70px">
+  <script >
+    document.addEventListener('DOMContentLoaded', function() {
+  const image = document.getElementById('image');
+  let posX = window.innerWidth / 8;
+  let posY = window.innerHeight / 8;
+
+  const moveSpeed = 100; // Adjust the movement speed
+
+  function updateImagePosition() {
+    image.style.transform = `translate(${posX}px, ${posY}px)`;
+  }
+
+  function handleArrowKey(event) {
+    switch (event.key) {
+      case 'ArrowUp':
+        posY -= moveSpeed;
+        break;
+      case 'ArrowDown':
+        posY += moveSpeed;
+        break;
+      case 'ArrowLeft':
+        posX -= moveSpeed;
+        break;
+      case 'ArrowRight':
+        posX += moveSpeed;
+        break;
+      default:
+        return;
+    }
+    updateImagePosition();
+  }
+
+  // Add event listener to handle arrow key events
+  document.addEventListener('keydown', handleArrowKey);
+});
+
+  </script>
+</body>
+</html>
